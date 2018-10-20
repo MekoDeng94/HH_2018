@@ -1,5 +1,5 @@
 <template>
-  <div class="template_model">
+  <div class="template_model" style="position:relative">
   </div>
 </template>
 
@@ -30,11 +30,27 @@ export default {
     // type: "Header"
     // width: "200.00"
     renderWidget(widget){
-        let node = document.createElement(this.widget_mapper[widget['type']])
-        node.style.backgroundColor = "red"
+        let node = document.createElement(this.widget_mapper[widget['type']]['w_type'])
+        node.style.position = "absolute"        
+        node.style.display = "block"
+        node.style.overflow = "hidden"
+        node.style.top = `${widget['top_position']}px`
+        node.style.left = `${widget['left_position']}px`
+        // node.style.backgroundColor = "red"
         node.style.width = `${widget['width']}px`
         node.style.height = `${widget['height']}px`
+
+        this.set_default(widget, node)
         this.parent.appendChild(node)
+    },
+    set_default(widget, node){
+        if (node.tagName === "IMG"){
+            node.src = widget['image']
+        } else if (node.tagName === "P") {
+            node.innerHTML = widget['text']
+        } else if (node.tagName === "DIV") {
+            node.innerHTML = `<img src=${widget['image']}></img>`
+        }
     }
   },
   created() {
@@ -45,9 +61,15 @@ export default {
     axios.get('http://ramen.serveo.net/widgets').then((response) => {
         this.widgets = response.data
         this.widget_mapper = {
-            'Header':'div',
-            'Image':'img',
-            'Text':'p'
+            'Header':{
+                'w_type':'div'
+            },
+            'Image':{
+                'w_type':'img'
+            },
+            'Text':{
+                'w_type':'p'
+            }
         }
         this.renderAllWidgets()
     })      
