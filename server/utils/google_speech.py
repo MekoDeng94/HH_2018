@@ -147,7 +147,7 @@ def listen_print_loop(responses):
             num_chars_printed = 0
 
 
-def main():
+def get_speech_data():
     # threading.Timer(10.0, main).start()
     print("running main..")
     # See http://g.co/cloud/speech/docs/languages
@@ -174,7 +174,9 @@ def main():
 
         # Now, put the transcription responses to use.
         data = listen_print_loop(responses)
+        return data
 
 
 if __name__ == '__main__':
-    main()
+    data = get_speech_data()
+    print(data)

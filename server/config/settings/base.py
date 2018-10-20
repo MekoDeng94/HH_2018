@@ -24,10 +24,11 @@ THIRD_PARTY_APPS = [
 ]
 
 PROJECT_APPS = [
-    'apps.ping.apps.PingConfig',
-    'apps.accounts.apps.AccountsConfig',
-    'apps.widgets.apps.WidgetsConfig',
-    'apps.layouts.apps.LayoutsConfig'
+    # 'apps.ping.apps.PingConfig',
+    # 'apps.accounts.apps.AccountsConfig',
+    # 'apps.widgets.apps.WidgetsConfig',
+    # 'apps.layouts.apps.LayoutsConfig',
+    'apps.recordings.apps.RecordingsConfig'
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
