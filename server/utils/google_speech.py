@@ -97,6 +97,8 @@ def listen_print_loop(responses):
     final one, print a newline to preserve the finalized transcription.
     """
     num_chars_printed = 0
+    data = list()
+
     for response in responses:
         if not response.results:
             continue
@@ -129,16 +131,18 @@ def listen_print_loop(responses):
 
         else:
             # Printing out the output:
-            for word_info in words_info:
-                print("word: '{}', speaker_tag: {}".format(word_info.word,
-                                                        word_info.speaker_tag))
+            # for word_info in words_info:
+            #     print("word: '{}', speaker_tag: {}".format(word_info.word,
+            #                                             word_info.speaker_tag))
             print(transcript + overwrite_chars)
+
+            data.append(transcript)  # Add transcript
 
             # Exit recognition if any of the transcribed phrases could be
             # one of our keywords.
             if re.search(r'\b(exit|quit)\b', transcript, re.I):
                 print('Exiting..')
-                break
+                return data
 
             num_chars_printed = 0
 
@@ -169,7 +173,7 @@ def main():
         responses = client.streaming_recognize(streaming_config, requests)
 
         # Now, put the transcription responses to use.
-        listen_print_loop(responses)
+        data = listen_print_loop(responses)
 
 
 if __name__ == '__main__':
