@@ -142,6 +142,7 @@ def listen_print_loop(responses):
             # one of our keywords.
             if re.search(r'\b(exit|quit)\b', transcript, re.I):
                 print('Exiting..')
+                data.pop() # Remove quit/exit keywords
                 return data
 
             num_chars_printed = 0
