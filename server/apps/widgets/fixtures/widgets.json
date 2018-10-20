@@ -1,0 +1,44 @@
+[
+{
+  "model": "widgets.widget",
+  "pk": 1,
+  "fields": {
+    "type": "Header",
+    "title": "Hello World!",
+    "text": "",
+    "image": "",
+    "height": "300.00",
+    "width": "200.00",
+    "top_position": "0.00",
+    "left_position": "0.00"
+  }
+},
+{
+  "model": "widgets.widget",
+  "pk": 2,
+  "fields": {
+    "type": "Text",
+    "title": null,
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mattis sollicitudin diam quis viverra. Nam porttitor eu dolor in porta. Phasellus accumsan feugiat enim mollis euismod. Praesent quis lorem volutpat, ullamcorper nibh a, auctor ex. Nunc nec es",
+    "image": "",
+    "height": "500.00",
+    "width": "100.00",
+    "top_position": "400.00",
+    "left_position": "0.00"
+  }
+},
+{
+  "model": "widgets.widget",
+  "pk": 3,
+  "fields": {
+    "type": "Image",
+    "title": null,
+    "text": "",
+    "image": "images/287.jpg",
+    "height": "200.00",
+    "width": "300.00",
+    "top_position": "400.00",
+    "left_position": "200.00"
+  }
+}
+]
