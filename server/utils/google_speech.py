@@ -17,7 +17,7 @@ RATE = 16000
 CHUNK = int(RATE / 10)  # 100ms
 
 root_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.path.join(root_dir, 'HackHarvard.json')
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.path.join(root_dir, 'google_credentials.json')
 
 class MicrophoneStream(object):
     """Opens a recording stream as a generator yielding the audio chunks."""
