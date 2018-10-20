@@ -140,7 +140,7 @@ def listen_print_loop(responses):
 
             # Exit recognition if any of the transcribed phrases could be
             # one of our keywords.
-            if re.search(r'\b(exit|quit)\b', transcript, re.I):
+            if re.search(r'\b(exit|quit|publish)\b', transcript, re.I):
                 print('Exiting..')
                 data.pop() # Remove quit/exit keywords
                 return data
@@ -177,7 +177,25 @@ def get_speech_data():
         data = listen_print_loop(responses)
         return data
 
+def get_dict(data):
+    valdict = {}
+    first = data[0] 
+    second = data[1]
+    
+
+    type1 = first.split(' says ')[0]
+    saying1 = first.split(' says ')[1]
+    type2 = second.split(' says ')[0]
+    saying2 = second.split(' says ')[1]
+
+    valdict[len(valdict)] = {'type': type1, 'says': saying1}
+    valdict[len(valdict)] = {'type': type2, 'says': saying2}
+    
+    return valdict
+
+
 
 if __name__ == '__main__':
     data = get_speech_data()
     print(data)
+    get_dict(data)
