@@ -1,3 +1,5 @@
 from django.contrib import admin
+from apps.recordings.models.recording import Recording
 
-# Register your models here.
+
+admin.site.register(Recording)

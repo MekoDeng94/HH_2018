@@ -182,7 +182,6 @@ def get_dict(data):
     first = data[0] 
     second = data[1]
     
-
     type1 = first.split(' says ')[0]
     saying1 = first.split(' says ')[1]
     type2 = second.split(' says ')[0]
