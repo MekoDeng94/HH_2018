@@ -14,3 +14,6 @@ class Widget(models.Model):
     width = models.DecimalField(max_digits=6, decimal_places=2)
     top_position = models.DecimalField(max_digits=6, decimal_places=2)
     left_position = models.DecimalField(max_digits=6, decimal_places=2)
+
+    def __str__(self):
+        return '{}: (({}, {}), {}, {})'.format(self.type, self.top_position, self.left_position, self.width, self.height)
