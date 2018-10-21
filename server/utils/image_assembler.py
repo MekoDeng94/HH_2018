@@ -9,14 +9,10 @@ class image_assembler(object):
     @staticmethod
     def assemble(frame_info):        
         image_dictionary = pickle.load('image_dictionary', 'rb')
-        #print (image_dictionary)
         frame = image_dictionary[frame_info[0]['type']]
         flip_img = cv2.flip(image_dictionary[frame_info[1]['type']], 1)
         space = np.empty((256, 60))
-        #print (space.shape)
         space.fill(255)
-        #print (space.shape)
-        #print (frame.shape)
         frame = np.hstack((frame, space))
         frame = np.hstack((frame, flip_img))
         background = cv2.imread('binarized_scene.png', 0)
