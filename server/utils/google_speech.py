@@ -136,7 +136,7 @@ def listen_print_loop(responses):
             #                                             word_info.speaker_tag))
             print(transcript + overwrite_chars)
 
-            data.append(transcript)  # Add transcript
+            data.append(transcript.strip())  # Add transcript
 
             # Exit recognition if any of the transcribed phrases could be
             # one of our keywords.
@@ -178,7 +178,6 @@ def get_speech_data():
         return data
 
 def get_dict(data):
-    print(data)
     valdict = {}
     first, second = data
     
@@ -191,8 +190,6 @@ def get_dict(data):
     valdict[len(valdict)] = {'type': type2, 'says': saying2}
     
     return valdict
-
-
 
 if __name__ == '__main__':
     data = get_speech_data()

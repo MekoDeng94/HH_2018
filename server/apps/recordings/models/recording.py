@@ -7,7 +7,7 @@ def get_image_path(instance, filename):
 
 class Recording(models.Model):
     text = models.TextField(max_length=255, null=True, blank=True)
-    image = image = models.ImageField(upload_to=get_image_path, null=True, blank=True)
+    image = models.ImageField(upload_to=get_image_path, null=True, blank=True)
 
     def __str__(self):
         return self.text
