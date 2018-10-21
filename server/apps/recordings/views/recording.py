@@ -12,14 +12,12 @@ class RecordView(APIView):
     def get(self, request):
         data = get_speech_data()
 
-        # Merge texts
-        text = ' '.join(text) if len(text) > 1 else text 
-
         dictionary = get_dict(data)
         print(dictionary)
-        
+
         # TODO: Pass dictionary to classifier
-        # image = image_assembler(dictionary)
+        image = image_assembler.assemble(dictionary)
+        print(image)
 
         # TODO: Save data to DB
         # recording = Recording(text=text)

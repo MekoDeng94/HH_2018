@@ -7,9 +7,11 @@ import pickle
 class image_assembler(object):
 
     @staticmethod
-    def assemble(frame_info):        
-        image_dictionary = pickle.load('image_dictionary', 'rb')
-        #print (image_dictionary)
+    def assemble(frame_info):
+        img_dic = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'image_dictionary')
+
+        image_dictionary = pickle.load(open(img_dic, 'rb'))
+        print (image_dictionary)
         frame = image_dictionary[frame_info[0]['type']]
         flip_img = cv2.flip(image_dictionary[frame_info[1]['type']], 1)
         space = np.empty((256, 60))

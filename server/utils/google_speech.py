@@ -178,14 +178,14 @@ def get_speech_data():
         return data
 
 def get_dict(data):
+    print(data)
     valdict = {}
-    first = data[0] 
-    second = data[1]
+    first, second = data
     
-    type1 = first.split(' says ')[0]
-    saying1 = first.split(' says ')[1]
-    type2 = second.split(' says ')[0]
-    saying2 = second.split(' says ')[1]
+    type1 = first.split(' says ')[0].strip()
+    saying1 = first.split(' says ')[1].strip()
+    type2 = second.split(' says ')[0].strip()
+    saying2 = second.split(' says ')[1].strip()
 
     valdict[len(valdict)] = {'type': type1, 'says': saying1}
     valdict[len(valdict)] = {'type': type2, 'says': saying2}
