@@ -4,6 +4,7 @@ from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from apps.recordings.models.recording import Recording
+from apps.recordings.serializers.recording import RecordingSerializer
 from utils.google_speech import get_speech_data, get_dict
 from utils.image_assembler import image_assembler
 
@@ -30,7 +31,7 @@ class RecordView(APIView):
         recording = Recording(text=text, image=image)
         recording.save()
 
-        # TODO: Delete image
+        serializer = RecordingSerializer(recording)
 
-        return Response(data, status=status.HTTP_200_OK)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
