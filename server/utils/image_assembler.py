@@ -18,7 +18,7 @@ class image_assembler(object):
         space.fill(255)
         frame = np.hstack((frame, space))
         frame = np.hstack((frame, flip_img))
-        background = cv2.imread('binarized_scene.png', 0)
+        background = cv2.imread(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'binarized_scene.png'), 0)
         right_splice_bound = int (background.shape[1]/2)+286
         left_splice_bound = int (background.shape[1]/2)-286
         top_splice_bound = int (background.shape[0]/2)-78
