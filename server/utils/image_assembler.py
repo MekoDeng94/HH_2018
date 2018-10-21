@@ -17,7 +17,7 @@ class image_assembler(object):
         space.fill(255)
         foreground = np.hstack((foreground, space))
         foreground = np.hstack((foreground, flip_foreground))
-        background = cv2.imread("scene.png", 0)
+        background = cv2.imread(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'scene.png'), 0)
         alpha = np.zeros((384,384))
         flip_alpha = np.zeros((384, 384))
         alpha = np.hstack((alpha, space - 255))
