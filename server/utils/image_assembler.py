@@ -25,4 +25,5 @@ class image_assembler(object):
         bottom_splice_bound = int (background.shape[0]/2)+178
         background[top_splice_bound:bottom_splice_bound, left_splice_bound:right_splice_bound] = frame
         background = cv2.resize(background, (720, 509), interpolation=cv2.INTER_AREA)
-        return background
+        cv2.imwrite('... .png', background)
+        return '... .png'
