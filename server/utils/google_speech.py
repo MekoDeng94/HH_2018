@@ -134,9 +134,10 @@ def listen_print_loop(responses):
             # for word_info in words_info:
             #     print("word: '{}', speaker_tag: {}".format(word_info.word,
             #                                             word_info.speaker_tag))
-            print(transcript + overwrite_chars)
+            text = transcript.strip().lower()
+            print(text + overwrite_chars)
 
-            data.append(transcript.strip())  # Add transcript
+            data.append(text)  # Add transcript
 
             # Exit recognition if any of the transcribed phrases could be
             # one of our keywords.
@@ -182,13 +183,13 @@ def get_dict(data):
     # character unicorn and alligator quit
     valdict = {}
     first, second = data
-    setting = first.split('setting ')[0]
+    setting = first.replace('setting', '').strip()
     character1 = second.split(' ')[1]
     character2 = second.split(' and ')[1]
 
     valdict[len(valdict)] = {'type': character1}
     valdict[len(valdict)] = {'type': character2}
-    valdict[len(valdict)] = {'setting':setting}
+    valdict[len(valdict)] = {'setting': setting}
     
     return valdict
 

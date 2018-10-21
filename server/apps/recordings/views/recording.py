@@ -1,4 +1,3 @@
-from django.conf import settings
 from rest_framework import status
 from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
@@ -10,6 +9,7 @@ from utils.image_assembler import image_assembler
 from django.core.files.base import ContentFile
 
 
+# TODO: Classify record image + record text
 class RecordView(APIView):
 
     def get(self, request):
@@ -20,8 +20,6 @@ class RecordView(APIView):
         print(dictionary)
 
         # Pass dictionary to classifier
-        save_path = settings.MEDIA_ROOT
-        print(save_path)
         image = image_assembler.assemble(dictionary)
         print(image)
 
