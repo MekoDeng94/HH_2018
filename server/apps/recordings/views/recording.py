@@ -7,6 +7,7 @@ from apps.recordings.models.recording import Recording
 from apps.recordings.serializers.recording import RecordingSerializer
 from utils.google_speech import get_speech_data, get_dict
 from utils.image_assembler import image_assembler
+from django.core.files.base import ContentFile
 
 
 class RecordView(APIView):
@@ -21,15 +22,18 @@ class RecordView(APIView):
         # Pass dictionary to classifier
         save_path = settings.MEDIA_ROOT
         print(save_path)
-        image = image_assembler.assemble(dictionary, save_path=save_path)
+        image = image_assembler.assemble(dictionary)
         print(image)
 
         text = ', '.join(data)
         print(text)
 
         # Save data to DB
-        recording = Recording(text=text, image=image)
-        recording.save()
+        with open(image, 'rb') as f:
+            data = f.read()
+            recording = Recording(text=text)
+            recording.image.save('output.png', ContentFile(data))
+
 
         serializer = RecordingSerializer(recording)
 
