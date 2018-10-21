@@ -181,7 +181,7 @@ def get_dict(data):
     # setting beach quit
     # character unicorn and alligator quit
     valdict = {}
-    first, second, third = data
+    first, second = data
     setting = first.split('setting ')[0]
     character1 = second.split(' ')[1]
     character2 = second.split(' and ')[1]
