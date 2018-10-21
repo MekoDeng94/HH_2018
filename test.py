@@ -4,6 +4,4 @@ import cv2
 #frame_info = {0:{'type':'owl', 'says':'bark'},1:{'type':'cat','says':'meow'}}
 frame_info = {0: {'says': 'hello', 'type': 'unicorn'}, 1: {'says': 'meow', 'type': 'cat'}}
 img = image_assembler.assemble(frame_info)
-cv2.imshow('fig', img)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+print (img)
