@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from apps.recordings.models.recording import Recording
 from utils.google_speech import get_speech_data, get_dict
+from utils.image_assembler import image_assembler
 
 
 class RecordView(APIView):
@@ -15,8 +16,10 @@ class RecordView(APIView):
         text = ' '.join(text) if len(text) > 1 else text 
 
         dictionary = get_dict(data)
-
+        print(dictionary)
+        
         # TODO: Pass dictionary to classifier
+        # image = image_assembler(dictionary)
 
         # TODO: Save data to DB
         # recording = Recording(text=text)

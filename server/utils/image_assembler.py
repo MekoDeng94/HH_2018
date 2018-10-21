@@ -1,13 +1,14 @@
+import os
 import numpy as np
 import cv2
 import pickle
 
+
 class image_assembler(object):
 
     @staticmethod
-    def assemble(frame_info):
-
-        image_dictionary = pickle.load(open('image_dictionary', 'rb'))
+    def assemble(frame_info):        
+        image_dictionary = pickle.load('image_dictionary', 'rb'))
         #print (image_dictionary)
         frame = image_dictionary[frame_info[0]['type']]
         flip_img = cv2.flip(image_dictionary[frame_info[1]['type']], 1)
