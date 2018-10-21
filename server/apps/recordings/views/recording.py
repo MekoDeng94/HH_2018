@@ -9,26 +9,23 @@ from utils.image_assembler import image_assembler
 from django.core.files.base import ContentFile
 
 
-# TODO: Classify record image + record text
-class RecordView(APIView):
+class RecordTextView(APIView):
 
     def get(self, request):
 
-        record_type = self.request.GET.get('type')
+        data = get_speech_data()
+        print(data)
 
-        # GET /record?type=text
-        if record_type == 'text':
-            data = get_speech_data()
-            print(data)
+        recording = Recording(text=data[0])
+        recording.save()
 
-            recording = Recording(text=data[0])
-            recording.save()
+        serializer = RecordingSerializer(recording)
 
-            serializer = RecordingSerializer(recording)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
-            return Response(serializer.data, status=status.HTTP_200_OK)
+class RecordView(APIView):
 
-        # Default
+    def get(self, request):
 
         data = get_speech_data()
         print(data)
