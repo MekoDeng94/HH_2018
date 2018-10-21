@@ -18,7 +18,15 @@ class RecordView(APIView):
 
         # GET /record?type=text
         if record_type == 'text':
-            return Response(status=status.HTTP_200_OK)
+            data = get_speech_data()
+            print(data)
+
+            recording = Recording(text=data[0])
+            recording.save()
+
+            serializer = RecordingSerializer(recording)
+
+            return Response(serializer.data, status=status.HTTP_200_OK)
 
         # Default
 
@@ -40,7 +48,6 @@ class RecordView(APIView):
             data = f.read()
             recording = Recording(text=text)
             recording.image.save('output.png', ContentFile(data))
-
 
         serializer = RecordingSerializer(recording)
         return Response(serializer.data, status=status.HTTP_200_OK)
