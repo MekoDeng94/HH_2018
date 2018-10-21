@@ -29,4 +29,4 @@ class image_assembler(object):
         if save_path:
             output_file_path = os.path.join(save_path, 'output.png')
         cv2.imwrite(output_file_path, background)
-        return output_file_path
+        return 'output.png'
