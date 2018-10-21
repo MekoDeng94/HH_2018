@@ -13,11 +13,11 @@ class image_assembler(object):
         image_dictionary = pickle.load(open(img_dic, 'rb'))
         foreground = image_dictionary[frame_info[0]['type']]
         flip_foreground = cv2.flip(image_dictionary[frame_info[1]['type']], 1)
+        background = cv2.imread(os.path.join(os.path.dirname(os.path.abspath(__file__)), str(frame_info[2]['setting'])) + '.png', 0)
         space = np.empty((384, 60))
         space.fill(255)
         foreground = np.hstack((foreground, space))
         foreground = np.hstack((foreground, flip_foreground))
-        background = cv2.imread(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'scene.png'), 0)
         alpha = np.zeros((384,384))
         flip_alpha = np.zeros((384, 384))
         alpha = np.hstack((alpha, space - 255))
