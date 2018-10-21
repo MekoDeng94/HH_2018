@@ -178,16 +178,17 @@ def get_speech_data():
         return data
 
 def get_dict(data):
+    # setting beach quit
+    # character unicorn and alligator quit
     valdict = {}
-    first, second = data
-    
-    type1 = first.split(' says ')[0].strip()
-    saying1 = first.split(' says ')[1].strip()
-    type2 = second.split(' says ')[0].strip()
-    saying2 = second.split(' says ')[1].strip()
+    first, second, third = data
+    setting = first.split('setting ')[0]
+    character1 = second.split(' ')[1]
+    character2 = second.split(' and ')[1]
 
-    valdict[len(valdict)] = {'type': type1, 'says': saying1}
-    valdict[len(valdict)] = {'type': type2, 'says': saying2}
+    valdict[len(valdict)] = {'type': character1}
+    valdict[len(valdict)] = {'type': character2}
+    valdict[len(valdict)] = {'setting':setting}
     
     return valdict
 
